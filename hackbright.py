@@ -47,7 +47,7 @@ def make_new_student(first_name, last_name, github):
     """
 
     QUERY = """
-        INSERT INTO Students
+        INSERT INTO students (first_name, last_name, github)
           VALUES (:first_name, :last_name, :github)
         """
 

@@ -43,18 +43,21 @@ def student_form_success():
     last_name = request.form.get("last_name")
     github = request.form.get("github")
 
-    QUERY = """ INSERT INTO students (first_name, last_name, github)
-              VALUES (:first_name, :last_name, :github)
-              """
-    hackbright.db.session.execute(QUERY,
-                        {'first_name': first_name,
-                        'last_name': last_name,
-                        'github': github})
-    hackbright.db.session.commit()
+    hackbright.make_new_student(first_name, last_name, github)
+
+    # QUERY = """ INSERT INTO students (first_name, last_name, github)
+    #           VALUES (:first_name, :last_name, :github)
+    #           """
+    # hackbright.db.session.execute(QUERY,
+    #                     {'first_name': first_name,
+    #                     'last_name': last_name,
+    #                     'github': github})
+    # hackbright.db.session.commit()
 
     return render_template('student_add_success.html',
                           first_name=first_name,
-                          last_name=last_name)
+                          last_name=last_name,
+                          github=github)
 
 if __name__ == "__main__":
     hackbright.connect_to_db(app)

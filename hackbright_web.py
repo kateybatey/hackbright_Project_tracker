@@ -26,6 +26,7 @@ def get_student_form():
     """Show form for searching for a student."""
 
     return render_template('student_search.html')
+    
 
 @app.route("/student-add", methods=['GET'])
 def student_add():

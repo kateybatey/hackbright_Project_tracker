@@ -20,7 +20,7 @@ def connect_to_db(app):
     db.init_app(app)
 
 
-def get_student_by_github(in_github):
+def get_student_by_github(github):
     """Given a GitHub account name, print info about the matching student."""
 
     QUERY = """
@@ -29,7 +29,7 @@ def get_student_by_github(in_github):
         WHERE github = :placeholder_github
         """
 
-    db_cursor = db.session.execute(QUERY, {'placeholder_github': in_github})
+    db_cursor = db.session.execute(QUERY, {'placeholder_github': github})
 
     row = db_cursor.fetchone()
 
